@@ -1,0 +1,7 @@
+name: katex
+imports:
+  - https://get.silverbullet.md/global.plug.json
+functions:
+  katexWidget:
+    path: ./katex.ts:widget
+    codeWidget: latex
