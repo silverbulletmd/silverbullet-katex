@@ -10,9 +10,9 @@ That's all!
 
 Put a latex block in your markdown:
 
-  ```latex
-  c = \pm\sqrt{a^2 + b^2}
-  ```
+    ```latex
+    c = \pm\sqrt{a^2 + b^2}
+    ```
 
 And move your cursor outside of the block to live preview it!
 
