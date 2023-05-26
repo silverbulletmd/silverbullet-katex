@@ -2,7 +2,7 @@
 # Silver Bullet KaTeX plug
 
 ## Installation
-Run the {[Plugs: Add]} command and paste in: `github:silverbulletmd/silverbullet-katex/katex.plug.json`
+Run the {[Plugs: Add]} command and paste in: `github:silverbulletmd/silverbullet-katex/katex.plug.js`
 
 That's all!
 
