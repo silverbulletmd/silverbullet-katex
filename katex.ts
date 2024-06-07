@@ -11,8 +11,9 @@ const settingsSchema = v.strictObject({
     v.union([
       v.array(v.picklist(katexFeatures, "Expected valid KaTeX feature under allowedFeatures")),
       v.literal("all")
-    ], "Expected array of features or string 'all' to allow all features")
-  ,() => []),
+    ], "Expected array of features or string 'all' to allow all features"),
+    () => []
+  ),
   macros: v.optional(v.array(v.strictObject({
     macro: v.string("Expected string for macro key of macro definiton"),
     expansion: v.string("Expected string for expansion key of macro definiton")
@@ -63,7 +64,7 @@ export async function widget(
     throwOnError: false,
     displayMode: settings.displayMode,
     macros: settings.macros.reduce((acc, x) => {
-      return {...acc, [x.macro]: x.expansion};
+      return { ...acc, [x.macro]: x.expansion };
     }, {} as Record<string, string>),
     strict: (code: KatexFeatures, msg: string, _: string): string => {
       if (settings.allowedFeatures === "all" || settings.allowedFeatures.includes(code)) return "ignore";
