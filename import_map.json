@@ -1,7 +1,7 @@
 {
   "imports": {
-    "$sb/": "https://deno.land/x/silverbullet@0.2.4/plug-api/",
-    "handlebars": "https://esm.sh/handlebars",
-    "yaml": "https://deno.land/std@0.184.0/yaml/mod.ts"
+    "valibot": "https://esm.sh/valibot@0.31.0-rc.12",
+    "katex": "https://esm.sh/katex@0.16.10",
+    "$sb/": "https://deno.land/x/silverbullet@0.7.7/plug-api/"
   }
 }

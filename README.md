@@ -1,10 +1,12 @@
 
-# Silver Bullet KaTeX plug
+# SilverBullet KaTeX plug
+
+This plug lets you render LaTeX using code blocks in your SilverBullet markdown files. To achieve this it uses [KaTeX](https://katex.org/), a small subset of LaTeX written in JavaScript.
 
 ## Installation
-Run the {[Plugs: Add]} command and paste in: `github:silverbulletmd/silverbullet-katex/katex.plug.js`
+Run the `{[Plugs: Add]}` command and paste in: `github:silverbulletmd/silverbullet-katex/katex.plug.js`
 
-That's all!
+*That's all!*
 
 ## Use
 
@@ -16,10 +18,28 @@ Put a latex block in your markdown:
 
 And move your cursor outside of the block to live preview it!
 
-**Note:** [KaTeX](https://katex.org) itself is not bundled with this plug, it pulls the JavaScript, CSS and fonts from the JSDelivr CDN. This means _this plug will not work without an Internet connection_. The reason for this limitation is that it is not yet possible to distribute font files via plugs, and KaTeX depends on specific web fonts.
+**Note:** KaTeX itself is only partially bundled with this plug, the JS is included, but CSS and fonts are fetched from the JSDelivr CDN. This means _this plug will not work without an Internet connection_. The reason for this limitation is that it is not yet possible to distribute font files via plugs, and KaTeX depends on specific web fonts.
+
+## Settings
+The plug offers multiple settings to control the behaviour of KaTeX. Just put the following in you `SETTINGS` file and customize:
+```yaml
+katex:
+  # To change the default rendering mode to displaystyle, alternatively use `\displaystyle` in the block
+  displayMode: true
+  # To enable some special features KaTeX offers to e.g. allow DOM manipulation
+  allowedFeatures: all
+  # Alternatively specifiy a list of features. For reference: https://katex.org/docs/options
+  allowedFeatures:
+    - mathVsTextUnits
+    - commentAtEnd
+  # Macros can be globally specified likes this. Make sure to escape the backslash
+  macros:
+    - macro: "\\coolR"
+      expansion: "\\mathbb{R}"
+```
 
 ## Build
-Assuming you have Deno and Silver Bullet installed, simply build using:
+Assuming you have Deno and SilverBullet installed, simply build using:
 
 ```shell
 deno task build
