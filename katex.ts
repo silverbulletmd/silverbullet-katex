@@ -41,7 +41,7 @@ function hashString(input: string): number {
 export async function widget(
   bodyText: string,
 ): Promise<{ html: string; script: string }> {
-  const result = v.safeParse(settingsSchema, await readSetting("katex"));
+  const result = v.safeParse(settingsSchema, await readSetting("katex") ?? {});
 
   let settings: Settings;
   if (!result.success) {
