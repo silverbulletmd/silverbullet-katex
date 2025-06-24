@@ -1,9 +1,8 @@
-import { readSetting } from "$sb/lib/settings_page.ts";
-import { editor } from "$sb/syscalls.ts";
-import katex from "katex";
+import { editor, system } from "@silverbulletmd/silverbullet/syscalls";
+import katex, { StrictFunction, Token } from "katex";
 import * as v from "valibot";
 
-const katexFeatures = ["unknownSymbol", "unicodeTextInMathMode", "mathVsTextUnits", "commentAtEnd", "htmlExtension"] as const;
+const katexFeatures = ["unknownSymbol", "unicodeTextInMathMode", "mathVsTextUnits", "commentAtEnd", "htmlExtension", "newLineInDisplayMode"] as const;
 
 const settingsSchema = v.strictObject({
   displayMode: v.optional(v.boolean("Expected boolean for displayMode option"), false),
@@ -41,7 +40,8 @@ function hashString(input: string): number {
 export async function widget(
   bodyText: string,
 ): Promise<{ html: string; script: string }> {
-  const result = v.safeParse(settingsSchema, await readSetting("katex") ?? {});
+  const config = await system.getConfig("katex", {});
+  const result = v.safeParse(settingsSchema, config);
 
   let settings: Settings;
   if (!result.success) {
@@ -66,7 +66,7 @@ export async function widget(
     macros: settings.macros.reduce((acc, x) => {
       return { ...acc, [x.macro]: x.expansion };
     }, {} as Record<string, string>),
-    strict: (code: KatexFeatures, msg: string, _: string): string => {
+    strict: (code: KatexFeatures, msg: string, _: Token): ReturnType<StrictFunction> => {
       if (settings.allowedFeatures === "all" || settings.allowedFeatures.includes(code)) return "ignore";
 
       const hash = hashString(`${bodyText} ${msg}`);

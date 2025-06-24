@@ -1,7 +1,0 @@
-{
-  "imports": {
-    "valibot": "https://esm.sh/valibot@0.31.0-rc.12",
-    "katex": "https://esm.sh/katex@0.16.10",
-    "$sb/": "https://deno.land/x/silverbullet@0.7.7/plug-api/"
-  }
-}
