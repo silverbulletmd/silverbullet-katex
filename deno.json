@@ -1,0 +1,11 @@
+{
+  "tasks": {
+    "build": "deno check -c deno.json && deno run -A https://github.com/silverbulletmd/silverbullet/releases/download/edge/plug-compile.js --info -c deno.json katex.plug.yaml"
+  },
+  "imports": {
+    "valibot": "npm:valibot@1.1.0",
+    "katex": "npm:katex@0.16.22",
+    "@silverbulletmd/silverbullet/syscalls": "jsr:@silverbulletmd/silverbullet@^2.0.0-pre/syscalls"
+  },
+  "lock": false
+}
