@@ -1,5 +1,6 @@
-
 # SilverBullet KaTeX plug
+
+# DEPRECATED: Use [this library instead](https://github.com/MrMugame/silverbullet-math)
 
 This plug lets you render LaTeX using code blocks in your SilverBullet markdown files. To achieve this it uses [KaTeX](https://katex.org/), a small subset of LaTeX written in JavaScript.
 
